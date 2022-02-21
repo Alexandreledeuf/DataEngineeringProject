@@ -14,7 +14,7 @@ app.post('/getText', function(req, res) {
 
     let Result;
     // spawn new child process to call the python script
-    const python = spawn('python', ['script.py']);
+    const python = spawn('python', ['script.py','--text='+text]);
         // collect data from script
     python.stdout.on('data', function (data) {
         console.log('python script launch')
