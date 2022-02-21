@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from "react";
+const axios = require('axios')
 
 function App() {
+
+  const [text, setText] = useState("");
+  const [result,setResult] = useState("nothing");
+
+  function getQuote() {
+    axios.post("http://localhost:8083/getText", {text : text}).then(function(response)
+    {
+      console.log(text)
+      setResult(response.data)
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form action="http://localhost:8083/getText" method="POST">
+          <input type="text" name="text" required onChange={(e)=>{setText(e.target.value)}}></input>
+          <button type="button" onClick={()=>{getQuote()}}>Send Text</button>
+      </form>
+      <div>
+        {result}
+      </div>
     </div>
   );
 }
-
 export default App;
