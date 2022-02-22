@@ -14,12 +14,23 @@ app.post('/getText', function(req, res) {
 
     let Result;
     // spawn new child process to call the python script
-    const python = spawn('python', ['script.py','--text='+text]);
+    const python = spawn('python', ['./script.py',text]); //
         // collect data from script
     python.stdout.on('data', function (data) {
         console.log('python script launch')
         Result = data.toString();
+        console.log(Result);
+
     });
+
+    python.stderr.on('data', (data) => {
+        console.error('err: ', data.toString());
+    });
+      
+    python.on('error', (error) => {
+        console.error('error: ', error.message);
+    });
+
         // in close event we are sure that stream from child process is closed
     python.on('close', (code) => {
     console.log(`child process close all stdio with code ${code}`);
