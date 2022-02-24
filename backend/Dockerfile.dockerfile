@@ -10,7 +10,7 @@ COPY * ./
 #        python3-pip \
 #    && pip3 install --upgrade pip
 
-COPY ./requirements.txt .
+COPY ./backend/requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY ./backend/package*.json /app
