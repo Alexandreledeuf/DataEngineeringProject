@@ -11,7 +11,7 @@ COPY * ./
 #    && pip3 install --upgrade pip
 
 COPY ./backend/requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir
 
 COPY ./backend/package*.json /app
 COPY ./backend/script.py /app
