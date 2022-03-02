@@ -1,0 +1,9 @@
+}
+
+//,
+  //"jest": {
+  //  "preset": "react-native",
+  //  "transform": {
+  //    "^.+\\.ts?$": "ts-jest"
+  // }
+  //}

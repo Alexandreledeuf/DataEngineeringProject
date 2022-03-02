@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/getText', function(req, res) {
+
     let text = req.body.text;
     console.log(text);
 
@@ -19,10 +20,9 @@ app.post('/getText', function(req, res) {
     python.stdout.on('data', function (data) {
         console.log('python script launch')
         Result = data.toString();
-        console.log(Result);
-
     });
 
+    
     python.stderr.on('data', (data) => {
         console.error('err: ', data.toString());
     });

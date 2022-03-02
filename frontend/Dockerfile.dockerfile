@@ -7,4 +7,4 @@ RUN npm install
 RUN npm install react axios
 COPY ./ /app
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "start","test"]
