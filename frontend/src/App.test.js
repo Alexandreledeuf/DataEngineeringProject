@@ -43,6 +43,13 @@ test('Stress test backend', () => {
 });
 
 test('text test', () => {
+  const onClick = App().getQuote();
+  const { getByPlaceholderText, getByText } = render(<App onClick={onClick} />);
+  const text = getByPlaceholderText('text')
+  userEvent.type(text,"I will kick your ass")
+  fireEvent.submit(getByText(/Send/i));
+  onClick()
+  expect(onClick).toHaveBeenCalled();
 });
 
 
