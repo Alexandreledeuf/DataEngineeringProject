@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('NPM up') {
+      steps {
+        bat 'docjer-compose up'
+      }
+    }
+
   }
 }
