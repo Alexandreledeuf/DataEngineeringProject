@@ -1,0 +1,12 @@
+global:
+  smtp_smarthost: 'localhost'
+  smtp_from: 'alexandre@localhost.com'
+route:
+  receiver: 'jason@localhost.com'
+receivers:
+- name: 'jason@localhost.com'
+  email_configs:
+    - to: 'jason@localhost.com'
+    tls_config:
+        insecure_skip_verify: true
+
