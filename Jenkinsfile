@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('NPM up') {
-      steps {
-        bat 'docjer-compose up'
+      parallel {
+        stage('NPM up') {
+          steps {
+            bat 'docjer-compose up'
+          }
+        }
+
+        stage('npm test') {
+          steps {
+            bat 'npm test'
+          }
+        }
+
       }
     }
 
