@@ -15,18 +15,12 @@ pipeline {
           }
         }
 
-        stage('sleep') {
+        stage('test') {
           steps {
-            bat 'sleep 30'
+            bat 'npm test'
           }
         }
 
-      }
-    }
-
-    stage('Test') {
-      steps {
-        bat 'npm test'
       }
     }
 
