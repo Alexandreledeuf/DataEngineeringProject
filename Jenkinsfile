@@ -15,16 +15,22 @@ pipeline {
           }
         }
 
-        stage('npm test') {
+        stage('sleep') {
           steps {
-            bat 'sleep(30);npm test;'
+            bat 'sleep 30'
           }
         }
 
       }
     }
 
-    stage('npm down') {
+    stage('Test') {
+      steps {
+        bat 'npm test'
+      }
+    }
+
+    stage('down') {
       steps {
         bat 'docker-compose down'
       }
