@@ -17,10 +17,16 @@ pipeline {
 
         stage('npm test') {
           steps {
-            bat 'npm test'
+            bat 'sleep(30);npm test;'
           }
         }
 
+      }
+    }
+
+    stage('npm down') {
+      steps {
+        bat 'docker-compose down'
       }
     }
 
