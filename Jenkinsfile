@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('NPM up') {
           steps {
-            bat 'docker-compose up'
+            bat 'docker-compose up --build'
           }
         }
 
