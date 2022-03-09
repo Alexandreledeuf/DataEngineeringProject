@@ -1,11 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage('NPM up') {
+    stage('NPM build') {
+      steps {
+        bat 'docker-compose build'
+      }
+    }
+
+    stage('up') {
       parallel {
-        stage('NPM up') {
+        stage('down') {
           steps {
-            bat 'docker-compose up --build'
+            bat 'docker-compose up'
           }
         }
 
